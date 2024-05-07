@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('css')
+<link rel="stylesheet" href="{{ asset('css/register.css') }}">
+@endsection
+
 @section('content')
 <div class="register-form">
     <h2 class="register-form_header">会員登録</h2>
@@ -38,7 +42,10 @@
                     @enderror
                 </p>
             </div>
-            <input type="submit" class="register-form_button" value="会員登録">
+            <div class="register-form_table">
+                <input type="submit" class="register-form_button" value="会員登録">
+            </div>
+            
         </form>
     </div>
 </div>

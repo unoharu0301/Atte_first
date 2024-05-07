@@ -1,4 +1,9 @@
 @extends('layouts.app')
+ 
+
+@section('css')
+<link rel="stylesheet" href="{{ asset('css/login.css') }}">
+@endsection
 
 @section('content')
 <div class="login-form">
@@ -22,7 +27,9 @@
                     @enderror
                 </p>
             </div>
-            <input type="submit" name="login-form_button" value="ログイン">
+            <div class="login-form_table">
+                <input type="submit" class="login-form_button" value="ログイン">
+            </div>
         </form>
         
     </div>
@@ -33,7 +40,7 @@
 @section('account')
 <div class="footer">
     <div class="footer_induction">アカウントをお持ちでない方はこちら</div>
-    <a href="/register" class="footer__account">
+    <a href="/register" class="footer_account">
     会員登録
 </a>
 </div>

@@ -15,10 +15,10 @@ class CreateRestsTable extends Migration
     {
         Schema::create('rests', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
+            $table->foreignId('user_id')->constrained();
             $table->tinyinteger('restpart');
-            $table->datetime('rest_start_time', $precision = 0);
-            $table->datetime('rest_end_time', $precision = 0);
+            $table->datetime('rest_start_time')->nullable();
+            $table->datetime('rest_end_time')->nullable();
             $table->timestamps();
         });
     }

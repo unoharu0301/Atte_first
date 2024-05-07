@@ -1,22 +1,30 @@
+@if (Auth::check())
 @extends('layouts.app')
 
+@section('css')
+<link rel="stylesheet" href="{{ asset('css/home.css') }}">
+@endsection
+
 @section('link')
-<a href="/home" class="header__link">ホーム</a>
-<a href="/attendance" class="header__link">日付一覧</a>
-<form action="/logout" method="post">
-    @csrf
-    <input type="submit" class="header__link" value="logout">
-</form>
+<div class="lightheader">
+    <a href="/home" class="header_link">ホーム</a>
+    <a href="/attendance" class="header_link">日付一覧</a>
+    <form action="/logout" method="post">
+        @csrf
+        <input type="submit" class="header_link" value="logout">
+    </form>
+</div>
+
 @endsection
 
 
 
 @section('content')
 <div class="home">
-    <h2 class="home__heading">
-        <?php ?>さんお疲れ様です！
+    <h2 class="home_heading">
+        {{Auth::user()->name}} さんお疲れ様です！
     </h2>
-    <div class="stamp_button">
+    <div class="stamp_button_work">
         <div class="stamp_button_workstart">
             <form action="/home_stamp
             " method="POST">
@@ -30,6 +38,8 @@
                 <input type="submit" class="workend" value="勤務終了">
             </form>
         </div>
+    </div>
+    <div class="stamp_button_rest">
         <div class="stamp_button_reststart">
             <form action="/home_rest" method="POST">
                 @csrf
@@ -45,3 +55,4 @@
     </div>
 </div>
 @endsection
+@endif

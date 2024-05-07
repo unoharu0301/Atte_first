@@ -1,4 +1,9 @@
+@if (Auth::check())
 @extends('layouts.app')
+
+@section('css')
+<link rel="stylesheet" href="{{ asset('css/attendance.css') }}">
+@endsection
 
 @section('link')
 <a href="/home" class="header__link">ホーム</a>
@@ -17,25 +22,27 @@
 </div>
 
 <table>
+    @foreach ($workresults as $workresult)
+    @foreach ($restresults as $restresult)
     <tr>
         <th>id</th>
         <th>名前</th>
-        <th>休憩開始</th>
-        <th>休憩終了</th>
         <th>勤務開始</th>
         <th>勤務終了</th>
+        <th>休憩時間</th>
+        <th>勤務時間</th>
     </tr>
-    @foreach ($rests as $rest)
-    @foreach ($works as $work)
     <tr>
-        <th>{{$rest->id}}</th>
-        <th>{{$rest->user_id}}</th>
-        <th>{{$rest->rest_start_time}}</th>
-        <th>{{$rest->rest_end_time}}</th>
-        <th>{{$work->work_start_time}}</th>
-        <th>{{$work->work_end_time}}</th>
+        <th>{{$workresult->user_id}}</th>
+        <th>{{Auth::user()->name}}</th>
+        <th>{{$workresult->work_start_time}}</th>
+        <th>{{$workresult->work_end_time}}</th>
+        <th>{{$restresult->rest_start_time}}</th>
+        <th>{{$restresult->rest_end_time}}</th>
+
     </tr>
     @endforeach
     @endforeach
 </table>
 @endsection
+@endif

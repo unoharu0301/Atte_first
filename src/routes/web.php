@@ -23,15 +23,26 @@ Route::get('/', function () {
 });
 
 Route::get('/home', [AttendanceController::class, 'home']);
-
-
+Route::post('/home', [AttendanceController::class, 'home']);
 Route::get('/attendance', [AttendanceController::class, 'date']);
 Route::post('/attendance', [AttendanceController::class, 'date']);
+Route::get('/home_stamp', [WorkController::class, 'stamp']);
 Route::post('/home_stamp', [WorkController::class, 'stamp']);
+Route::get('/home_stamp_end', [WorkController::class, 'stamp_end']);
 Route::post('/home_stamp_end', [WorkController::class, 'stamp_end']);
+Route::get('/home_rest', [RestController::class,'rest']);
 Route::post('/home_rest', [RestController::class,'rest']);
+Route::get('/home_rest_end', [RestController::class, 'rest_end']);
 Route::post('/home_rest_end', [RestController::class, 'rest_end']);
-/*Route::get('/register', [RegisteredUserController::class, ('create')]);
-Route::post('/register', [RegisteredUserController::class, ('store')]);
-Route::get('/login', [AuthenicatedSessionController::class, ('store')]);
-Route::post('/login', [AuthenicatedSessionController::class, ('destroy')]);*/
+/*Route::get('/home', [AttendanceController::class, 'home']);
+Route::middleware('auth')->group(function () {
+    Route::get('/home', [AttendanceController::class, 'home']);
+    Route::get('/attendance', [AttendanceController::class, 'date']);
+    Route::post('/attendance', [AttendanceController::class, 'date']);
+    Route::post('/home_stamp', [WorkController::class, 'stamp']);
+    Route::post('/home_stamp_end', [WorkController::class, 'stamp_end']);
+    Route::post('/home_rest', [RestController::class,'rest']);
+    Route::post('/home_rest_end', [RestController::class, 'rest_end']);
+});*/
+
+
