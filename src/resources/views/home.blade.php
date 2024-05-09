@@ -6,7 +6,7 @@
 @endsection
 
 @section('link')
-<div class="lightheader">
+<div class="rightheader">
     <a href="/home" class="header_link">ホーム</a>
     <a href="/attendance" class="header_link">日付一覧</a>
     <form action="/logout" method="post">
@@ -14,7 +14,6 @@
         <input type="submit" class="header_link" value="logout">
     </form>
 </div>
-
 @endsection
 
 

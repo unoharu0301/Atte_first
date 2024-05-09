@@ -1,6 +1,11 @@
 .header_link {
     display: inline;
     text-align: light;
+    text-decoration: none;
+}
+
+.rightheader {
+    text-align: right;
 }
 
 .home {

@@ -6,12 +6,14 @@
 @endsection
 
 @section('link')
-<a href="/home" class="header__link">ホーム</a>
-<a href="/attendance" class="header__link">日付一覧</a>
-<form action="/logout" method="post">
-    @csrf
-    <input type="submit" class="header__link" value="logout">
-</form>
+<div class="rightheader">
+    <a href="/home" class="header_link">ホーム</a>
+    <a href="/attendance" class="header_link">日付一覧</a>
+    <form action="/logout" method="post">
+        @csrf
+        <input type="submit" class="header__link" value="logout">
+    </form>
+</div>
 @endsection
 
 

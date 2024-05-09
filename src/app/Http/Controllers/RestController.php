@@ -17,25 +17,8 @@ class RestController extends Controller
 
         $oldrest = Rest::where('user_id', $user->id)->latest()->first();
         $oldDay2 = '';
-        
-        if($oldrest){
-            $oldTimerest = new Carbon($oldrest->rest_start_time);
-            $oldDay2 = $oldTimerest->startOfDay();
-        }
+
         $today = Carbon::today();
-
-        if(($oldDay2 == $today) && (empty($oldrest->rest_end_time))){
-            return redirect()->back()->with('message', '出勤打刻済み');
-        }
-
-        if($oldrest){
-            $oldTimerest_end = new Carbon($oldrest->rest_end_time);
-            $oldDay2 = $oldTimerest_end->startOfDay();
-        }
-
-        if(($oldDay2 == $today)){
-            return redirect()->back()->with('message', '退勤打刻済み');
-        }
 
         $month = intval($today->month);
         $day = intval($today->day);
@@ -48,9 +31,9 @@ class RestController extends Controller
             'rest' => Carbon::now(),
             'rest_start_time' => Carbon::now(),
         ]);
-        $restitems = Rest::where('user_id', \Auth::user()->id)->get();
+        $restitems = Rest::where('user_id', \Auth::user()->id)->latest()->get();
 
-        return view('attendance', ['restitems' => $restitems], ['resttimes' => $resttimes]);
+        return view('home', ['restitems' => $restitems], ['resttimes' => $resttimes]);
     
     }
 
@@ -62,7 +45,7 @@ class RestController extends Controller
         $day = intval($today->day);
         $year = intval($today->year);
 
-        $restenditems = Rest::where('user_id', \Auth::user()->id)->first();
+        $restenditems = Rest::where('user_id', \Auth::user()->id)->latest()->first();
 
         $resttimes = Rest::create([
             'user_name' => $user->name,
