@@ -31,8 +31,8 @@
         <th>名前</th>
         <th>勤務開始</th>
         <th>勤務終了</th>
-        <th>休憩時間</th>
-        <th>勤務時間</th>
+        <th>休憩開始</th>
+        <th>休憩終了</th>
     </tr>
     <tr>
         <th>{{$workresult->user_id}}</th>
